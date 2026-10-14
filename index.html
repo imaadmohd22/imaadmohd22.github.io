@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+
+  <meta name="description"
+    content="Portfolio of a Computer Science and AI graduate building AI-powered applications, document assistants, and business automation tools.">
+
+  <title>Mohd Imaad | AI, Python & Automation Developer</title>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #121620;
+      --surface-2: #171c28;
+      --text: #f3f5fa;
+      --muted: #a1a9ba;
+      --accent: #9bffb0;
+      --border: rgba(255,255,255,0.10);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,13,18,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.12rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .hero {
+      padding: 110px 0 100px;
+      background:
+        radial-gradient(ellipse at 85% 20%, rgba(155,255,176,0.09), transparent 35%),
+        radial-gradient(ellipse at 10% 70%, rgba(100,120,255,0.08), transparent 38%);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 22px 0;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 1.05;
+      letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 19px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b1710;
+      border-color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+    }
+
+    .hero-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .hero-note span {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      margin: 10px 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -1.5px;
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      color: var(--muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(145deg, var(--surface), #10131b);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      min-width: 0;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155,255,176,0.45);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .project-type {
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 100px;
+      font-size: 0.76rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .project-card > p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 20px 0;
+      display: grid;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 800;
+      margin-right: 9px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+    .tag {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: #d4d9e4;
+      border-radius: 7px;
+      padding: 5px 9px;
+      font-size: 0.78rem;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .text-link {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .skills-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .skills-panel h3 {
+      margin-bottom: 17px;
+    }
+
+    .skill-group {
+      margin-bottom: 20px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group h4 {
+      color: var(--accent);
+      font-size: 0.88rem;
+      margin-bottom: 9px;
+    }
+
+    .skill-group p {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .contact-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      padding: 38px;
+      border: 1px solid rgba(155,255,176,0.24);
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(155,255,176,0.10), transparent 45%),
+        var(--surface);
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      max-width: 570px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 80px 0 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 22px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .projects-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .contact-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="#home">Imaad<span>.</span></a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        aria-label="Toggle navigation">
+        Menu ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <p class="eyebrow">Computer Science · AI · Automation</p>
+
+        <h1>
+          Building useful<br>
+          <span>AI & automation</span><br>
+          solutions.
+        </h1>
+
+        <p class="hero-copy">
+          I'm Mohd Imaad, a Computer Science and Artificial Intelligence
+          graduate interested in building practical Python applications,
+          AI-powered tools, and business automation solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">
+            Explore my projects ↘
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://www.linkedin.com/in/mohd-imaad-b40311257/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Connect on LinkedIn ↗
+          </a>
+        </div>
+
+        <p class="hero-note">
+          <span>●</span>
+          Open to relevant projects, collaboration, and freelance opportunities.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects built to solve problems.</h2>
+          <p>
+            A selection of practical applications focused on business
+            efficiency, document intelligence, and customer management.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-number">PROJECT 01</span>
+              <span class="project-type">Data Automation</span>
+            </div>
+
+            <h3>Business Data Automation</h3>
+
+            <p>
+              A tool for cleaning and analyzing business spreadsheet data,
+              calculating useful metrics, and producing downloadable results.
+            </p>
+
+            <ul class="feature-list">
+              <li>CSV and Excel data analysis</li>
+              <li>Data cleaning and business metrics</li>
+              <li>Product and customer insights</li>
+              <li>Downloadable reports</li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Data Analysis</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://business-data-automation-gskkbqzkgxadfgznrjiy6k.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Live Demo ↗
+              </a>
+
+              <a
+                class="text-link"
+                href="https://github.com/imaadmohd22/business-data-automation"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-number">PROJECT 02</span>
+              <span class="project-type">Generative AI</span>
+            </div>
+
+            <h3>AI Document Assistant</h3>
+
+            <p>
+              A document assistant that helps users explore PDF content,
+              generate summaries, and ask questions about their documents.
+            </p>
+
+            <ul class="feature-list">
+              <li>PDF question answering</li>
+              <li>Document summarization</li>
+              <li>Retrieval-based answers with source references</li>
+              <li>PDF report exports</li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">RAG</span>
+              <span class="tag">LLM</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://github.com/imaadmohd22/ai-document-assistant"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-number">PROJECT 03</span>
+              <span class="project-type">Business Automation</span>
+            </div>
+
+            <h3>Sales CRM & Pipeline Automation</h3>
+
+            <p>
+              A CRM prototype for organizing potential customers, tracking
+              sales stages, prioritizing leads, and monitoring follow-ups.
+            </p>
+
+            <ul class="feature-list">
+              <li>Lead creation, editing, and management</li>
+              <li>Rule-based lead scoring</li>
+              <li>Sales pipeline and conversion metrics</li>
+              <li>Overdue and upcoming follow-up tracking</li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Pandas</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                class="text-link"
+                href="https://lead-management-system-qwao2hbdwhau2hdbvljvwh.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Live Demo ↗
+              </a>
+
+              <a
+                class="text-link"
+                href="https://github.com/imaadmohd22/lead-management-system"
+                target="_blank"
+                rel="noopener noreferrer">
+                Source Code ↗
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">About me</p>
+          <h2>Practical problem-solving, with a learning mindset.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I'm a Computer Science and Artificial Intelligence graduate
+              from Netaji Subhas University of Technology (NSUT), Delhi.
+            </p>
+
+            <p>
+              I'm interested in AI/ML, Generative AI, Python development,
+              and tools that reduce repetitive work for businesses.
+              I enjoy turning ideas into working applications and improving
+              them through testing and feedback.
+            </p>
+
+            <p>
+              My current portfolio includes data automation, an AI document
+              assistant, and a lead management system. These projects reflect
+              my hands-on learning across data processing, AI applications,
+              and business workflows.
+            </p>
+
+            <a
+              class="btn btn-secondary"
+              href="https://github.com/imaadmohd22"
+              target="_blank"
+              rel="noopener noreferrer">
+              Explore my GitHub ↗
+            </a>
+          </div>
+
+          <div class="skills-panel" id="skills">
+            <h3>Tools & areas of interest</h3>
+
+            <div class="skill-group">
+              <h4>Programming & Data</h4>
+              <p>Python, Pandas, NumPy, SQL, Data Analysis</p>
+            </div>
+
+            <div class="skill-group">
+              <h4>AI & Generative AI</h4>
+              <p>LLM applications, RAG, document question answering</p>
+            </div>
+
+            <div class="skill-group">
+              <h4>Application Development</h4>
+              <p>Streamlit, REST API concepts, SQLite</p>
+            </div>
+
+            <div class="skill-group">
+              <h4>Tools & Workflow</h4>
+              <p>Git, GitHub, virtual environments, deployment basics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow">Let's connect</p>
+            <h2>Have a problem worth solving?</h2>
+            <p>
+              If you need help with a Python automation tool, a document-based
+              AI application, or a simple business workflow, let's discuss
+              the requirements and see if I can help.
+            </p>
+          </div>
+
+          <a
+            class="btn btn-primary"
+            href="https://www.linkedin.com/in/mohd-imaad-b40311257/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Contact me on LinkedIn ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mohd Imaad. Built with HTML, CSS & JavaScript.</p>
+
+      <div class="footer-links">
+        <a
+          href="https://github.com/imaadmohd22"
+          target="_blank"
+          rel="noopener noreferrer">
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mohd-imaad-b40311257/"
+          target="_blank"
+          rel="noopener noreferrer">
+          LinkedIn
+        </a>
+
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "Close ✕" : "Menu ☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "Menu ☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
